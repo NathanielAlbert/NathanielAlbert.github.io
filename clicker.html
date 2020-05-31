@@ -1,0 +1,121 @@
+<script>
+    function update() {
+        document.getElementById('money').innerHTML = money;
+        document.getElementById('autoclickerslow').innerHTML = autoclickerslowcost;
+        document.getElementById('autoclickerfast').innerHTML = autoclickerfastcost;
+    }
+
+    var money = 0
+    var autoclickerslow = 0
+    var autoclickerslowcost = 10
+    var autoclickerfast = 0
+    var autoclickerfastcost = 100
+    var quadclicker = 0
+    var quadclickercost = 1000
+    var num = 0
+    var num2 = 0
+    var num3 = 0
+
+    function timer1() {
+        money = money + autoclickerslow;
+        update()
+    }
+    function timer2() {
+        money = money + autoclickerfast;
+        update()
+    }
+    function timer3() {
+        num3 = 0
+        num3 = quadclicker * 4
+        money = money + num3
+        update()
+    }
+        
+    setInterval(timer2, 1000)
+    setInterval(timer1, 5000)
+    setInterval(timer3, 500)
+</script>
+
+<html>
+    <head>
+        <title>Clicker v1.0</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <header>
+            <img src="bar.png" width="150" height="40">
+        </header>
+        <h1 id="money" class="money">0</h1>
+        <button onclick="a()">click</button>
+        <br>
+        <table>
+            <tr>
+                <th><button onclick="b()">autoclickerslow</button></th>
+                <td><p>cost:</p></td>
+                <td><p id="autoclickerslow">10</p></td>
+            <tr>
+                <th><button onclick="c()">autoclickerfast</button></th>
+                <td><p>cost:</p></td>
+                <td><p id="autoclickerfast">100</p></td>
+            <tr>
+                <th><button onclick="d()">QuadClicker</button></th>
+                <td><p>cost:</p></td>
+                <td><p id="quadclicker">1000</p></td>
+            <tr>
+        </table>
+        <script>
+            function a() {
+                money = money + 1;
+                update()
+            }
+
+            function b() {
+                if (money < autoclickerslowcost) {
+                    alert("need more money")
+                } else {
+                    var num = 0
+                    var num2 = 0
+                    money = money - autoclickerslowcost;
+                    autoclickerslow = autoclickerslow + 1;
+                    num = autoclickerslowcost / 2;
+                    var num2 = Math.round(num)
+                    autoclickerslowcost = autoclickerslowcost + num2;
+                    update()
+                }
+            }
+
+            function c() {
+                if (money < autoclickerfastcost) {
+                    alert("need more money")
+                } else {
+                    var num = 0
+                    var num2 = 0
+                    money = money - autoclickerfastcost;
+                    autoclickerfast = autoclickerfast + 1;
+                    num = autoclickerfastcost / 2;
+                    var num2 = Math.round(num)
+                    autoclickerfastcost = autoclickerfastcost + num2;
+                    update()
+                    
+                    
+                }
+                
+            }
+
+            function d() {
+                if (money < quadclickercost) {
+                    alert("need more money")
+                } else {
+                    var num = 0
+                    var num2 = 0
+                    money = money - quadclickercost
+                    quadclicker = quadclicker + 1
+                    num = quadclickercost / 2
+                    var num2 = Math.round(num)
+                    quadclickercost = quadclickercost + num2
+                    update()
+                }
+            }
+        </script>
+    </body>
+</html>
